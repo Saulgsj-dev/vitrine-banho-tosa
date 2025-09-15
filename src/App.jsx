@@ -5,14 +5,14 @@ const App = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
   const services = [
-    { id: 1, name: "Banho Premium", price: "R$ 65,00", image: "/1.svg", description: "Shampoo premium, condicionador, perfume e hidratação facial." },
-    { id: 2, name: "Tosa Higiênica", price: "R$ 55,00", image: "/2.svg", description: "Limpeza de áreas sensíveis, corte de unhas e higienização auricular." },
-    { id: 3, name: "Tosa Filhote", price: "R$ 75,00", image: "/3.svg", description: "Corte suave e carinhoso para os primeiros cuidados do seu pet." },
-    { id: 4, name: "Tosa Raça", price: "R$ 85,00", image: "/4.svg", description: "Estilo específico para raças: Poodle, Shih Tzu, Lhasa, etc." },
-    { id: 5, name: "Hidratação Capilar", price: "R$ 40,00", image: "/5.svg", description: "Máscara reconstrutora para pelos ressecados ou danificados." },
-    { id: 6, name: "Escovação Completa", price: "R$ 35,00", image: "/6.svg", description: "Desembaraço, remoção de pelos mortos e brilho intenso." },
-    { id: 7, name: "Pacote Spa Pet", price: "R$ 150,00", image: "/7.svg", description: "Banho + tosa + hidratação + perfume + laço ou gravatinha." },
-    { id: 8, name: "Day Care (4h)", price: "R$ 90,00", image: "/8.svg", description: "Seu pet brinca, socializa e se diverte enquanto você resolve seu dia." },
+    { id: 1, name: "Banho Premium", price: "R$ 65,00", image: "/1.png", description: "Shampoo premium, condicionador, perfume e hidratação facial." },
+    { id: 2, name: "Tosa Higiênica", price: "R$ 55,00", image: "/2.png", description: "Limpeza de áreas sensíveis, corte de unhas e higienização auricular." },
+    { id: 3, name: "Tosa Filhote", price: "R$ 75,00", image: "/3.png", description: "Corte suave e carinhoso para os primeiros cuidados do seu pet." },
+    { id: 4, name: "Tosa Raça", price: "R$ 85,00", image: "/4.png", description: "Estilo específico para raças: Poodle, Shih Tzu, Lhasa, etc." },
+    { id: 5, name: "Hidratação Capilar", price: "R$ 40,00", image: "/5.png", description: "Máscara reconstrutora para pelos ressecados ou danificados." },
+    { id: 6, name: "Escovação Completa", price: "R$ 35,00", image: "/6.png", description: "Desembaraço, remoção de pelos mortos e brilho intenso." },
+    { id: 7, name: "Pacote Spa Pet", price: "R$ 150,00", image: "/7.png", description: "Banho + tosa + hidratação + perfume + laço ou gravatinha." },
+    { id: 8, name: "Day Care (4h)", price: "R$ 90,00", image: "/8.png", description: "Seu pet brinca, socializa e se diverte enquanto você resolve seu dia." },
   ];
 
   const testimonials = [
