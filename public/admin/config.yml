@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: seu-usuario/seu-repo  # Substitua pelo seu repositório no GitHub
+  repo: Saulgsj-dev/vitrine-banho-tosa  # Substitua pelo seu repositório no GitHub
   branch: main                # ou "master"
 
 media_folder: "public/images"

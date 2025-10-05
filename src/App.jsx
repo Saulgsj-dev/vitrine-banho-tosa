@@ -175,26 +175,26 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section
-        id="hero"
-        className="h-screen bg-cover bg-center bg-fixed flex items-center justify-center text-center text-white relative pt-20"
-        style={{ backgroundImage: "url('/banner-banho.webp')" }}
-      >
-        <div className="absolute inset-0 bg-[#0d1b2a] bg-opacity-70"></div>
-        <div className="relative z-10 px-6 max-w-4xl">
-          <h1 className="text-5xl md:text-7xl font-light mb-6 tracking-tight">PETLUXE</h1>
-          <p className="text-xl md:text-2xl mb-8 font-light max-w-2xl mx-auto opacity-95">
-            Banho, tosa & muito carinho. Seu pet merece o melhor tratamento — com conforto e amor.
-          </p>
-          <button
-            onClick={() => scrollToSection('services')}
-            className="bg-[#0d1b2a] text-white font-medium py-4 px-10 rounded-full transition duration-300 shadow hover:shadow-lg hover:bg-[#1b263b]"
-          >
-            Ver Serviços
-          </button>
-        </div>
-      </section>
+{/* Hero Section */}
+<section
+  id="hero"
+  className="h-screen bg-cover bg-center bg-fixed flex items-center justify-center text-center text-white relative pt-20"
+  style={{ backgroundImage: "url('/banner-banho.webp')" }}
+>
+  <div className="absolute inset-0 bg-[#0d1b2a] bg-opacity-70"></div>
+  <div className="relative z-10 px-6 max-w-4xl">
+    <h1 className="text-5xl md:text-7xl font-light mb-6 tracking-tight">PETLUXE</h1>
+    <p className="text-xl md:text-2xl mb-8 font-light max-w-2xl mx-auto opacity-95">
+      Banho, tosa & muito carinho. Seu pet merece o melhor tratamento — com conforto e amor.
+    </p>
+    <button
+      onClick={() => scrollToSection('services')}
+      className="bg-[#0d1b2a] text-white font-medium py-4 px-10 rounded-full transition duration-300 shadow hover:shadow-lg hover:bg-[#1b263b]"
+    >
+      Ver Serviços
+    </button>
+  </div>
+</section>
 
       {/* Services Section */}
       <section id="services" className="py-24 px-6 md:px-12 bg-white">
