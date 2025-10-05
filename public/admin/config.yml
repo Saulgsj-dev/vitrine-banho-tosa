@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: seu-usuario/seu-repo  # Substitua pelo seu repositório no GitHub
+  branch: main                # ou "master"
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "config"
+    label: "Configurações Gerais"
+    files:
+      - name: "services"
+        label: "Serviços"
+        file: "src/data/services.json"
+        format: "json"
+        fields:
+          - { label: "Serviços", name: "services", widget: "list", field: { label: "Serviço", name: "service", widget: "object", fields: [
+              { label: "ID", name: "id", widget: "number" },
+              { label: "Nome", name: "name", widget: "string" },
+              { label: "Preço", name: "price", widget: "string" },
+              { label: "Imagem", name: "image", widget: "string" },
+              { label: "Descrição", name: "description", widget: "text" }
+            ] } }
+      - name: "testimonials"
+        label: "Depoimentos"
+        file: "src/data/testimonials.json"
+        format: "json"
+        fields:
+          - { label: "Depoimentos", name: "testimonials", widget: "list", field: { label: "Depoimento", name: "testimonial", widget: "object", fields: [
+              { label: "Nome", name: "name", widget: "string" },
+              { label: "Avatar", name: "avatar", widget: "string" },
+              { label: "Texto", name: "text", widget: "text" }
+            ] } }
+      - name: "advantages"
+        label: "Vantagens"
+        file: "src/data/advantages.json"
+        format: "json"
+        fields:
+          - { label: "Vantagens", name: "advantages", widget: "list", field: { label: "Vantagem", name: "advantage", widget: "object", fields: [
+              { label: "Ícone", name: "icon", widget: "string" },
+              { label: "Título", name: "title", widget: "string" },
+              { label: "Descrição", name: "desc", widget: "text" }
+            ] } }

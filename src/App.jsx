@@ -1,36 +1,16 @@
-// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-
-// Removido: Formspree
-// import { useForm, ValidationError } from '@formspree/react';
+import servicesData from './data/services.json';
+import testimonialsData from './data/testimonials.json';
+import advantagesData from './data/advantages.json';
 
 const App = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
-  // Dados estáticos (services, testimonials, advantages) permanecem iguais
-  const services = [
-    { id: 1, name: "Banho Premium", price: "R$ 65,00", image: "/1.png", description: "Shampoo premium, condicionador, perfume e hidratação facial." },
-    { id: 2, name: "Tosa Higiênica", price: "R$ 55,00", image: "/2.png", description: "Limpeza de áreas sensíveis, corte de unhas e higienização auricular." },
-    { id: 3, name: "Tosa Filhote", price: "R$ 75,00", image: "/3.png", description: "Corte suave e carinhoso para os primeiros cuidados do seu pet." },
-    { id: 4, name: "Tosa Raça", price: "R$ 85,00", image: "/4.png", description: "Estilo específico para raças: Poodle, Shih Tzu, Lhasa, etc." },
-    { id: 5, name: "Hidratação Capilar", price: "R$ 40,00", image: "/5.png", description: "Máscara reconstrutora para pelos ressecados ou danificados." },
-    { id: 6, name: "Escovação Completa", price: "R$ 35,00", image: "/6.png", description: "Desembaraço, remoção de pelos mortos e brilho intenso." },
-    { id: 7, name: "Pacote Spa Pet", price: "R$ 150,00", image: "/7.png", description: "Banho + tosa + hidratação + perfume + laço ou gravatinha." },
-    { id: 8, name: "Day Care (4h)", price: "R$ 90,00", image: "/8.png", description: "Seu pet brinca, socializa e se diverte enquanto você resolve seu dia." },
-  ];
-
-  const testimonials = [
-    { name: "Juliana & Bob", avatar: "https://randomuser.me/api/portraits/women/36.jpg", text: "Meu Bob saiu cheiroso, penteadinho e feliz! Atendimento impecável!" },
-    { name: "Ricardo & Mel", avatar: "https://randomuser.me/api/portraits/men/41.jpg", text: "Mel odeia banho, mas aqui ela fica calma. Profissionais incríveis!" },
-    { name: "Patrícia & Thor", avatar: "https://randomuser.me/api/portraits/women/62.jpg", text: "Thor é grandão e agitado, mas eles dominam com carinho e segurança. Recomendo!" },
-  ];
-
-  const advantages = [
-    { icon: "🛁", title: "Produtos Premium", desc: "Usamos shampoos hipoalergênicos e livres de químicos agressivos." },
-    { icon: "⏱️", title: "Agendamento Online", desc: "Marque pelo WhatsApp ou site. Horários flexíveis e lembrete por SMS." },
-    { icon: "❤️", title: "Ambiente Calmo", desc: "Sem estresse! Música suave, petiscos e muito carinho para seu pet." },
-  ];
+  // Carrega dados dos arquivos JSON
+  const services = servicesData.services;
+  const testimonials = testimonialsData.testimonials;
+  const advantages = advantagesData.advantages;
 
   const handleWhatsAppClick = (serviceName) => {
     const message = `Olá, PETLUXE! Gostaria de agendar: ${serviceName}`;
@@ -69,7 +49,6 @@ const App = () => {
     }
   };
 
-  // ✨ NOVO: Formulário com EmailJS
   const ContactForm = () => {
     const [status, setStatus] = useState({ loading: false, success: false, error: null });
 
@@ -77,18 +56,15 @@ const App = () => {
       e.preventDefault();
       setStatus({ loading: true, success: false, error: null });
 
-      // Substitua pelos seus dados do EmailJS
-const SERVICE_ID = 'gwwu rayc qsjl ssuo';  // ✅ Gerado pelo Gmail App → aceito pelo EmailJS
-const TEMPLATE_ID = 'template_1x6a3ly';    // ✅ Seu template
-const PUBLIC_KEY = 'IzDATYWynnYz2KMh2';    // ✅ Sua chave pública
-
-      const form = e.target;
+      const SERVICE_ID = 'gwwu rayc qsjl ssuo';
+      const TEMPLATE_ID = 'template_1x6a3ly';
+      const PUBLIC_KEY = 'IzDATYWynnYz2KMh2';
 
       emailjs
-        .sendForm(SERVICE_ID, TEMPLATE_ID, form, PUBLIC_KEY)
+        .sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY)
         .then(() => {
           setStatus({ loading: false, success: true, error: null });
-          form.reset();
+          e.target.reset();
         })
         .catch((err) => {
           console.error('Erro ao enviar e-mail:', err);
@@ -328,7 +304,7 @@ const PUBLIC_KEY = 'IzDATYWynnYz2KMh2';    // ✅ Sua chave pública
         </div>
       </section>
 
-      {/* Contato por E-mail (com EmailJS) */}
+      {/* Contato por E-mail */}
       <section id="contact" className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-light mb-4">

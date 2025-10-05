@@ -1,0 +1,19 @@
+{
+  "testimonials": [
+    {
+      "name": "Juliana & Bob",
+      "avatar": "https://randomuser.me/api/portraits/women/36.jpg",
+      "text": "Meu Bob saiu cheiroso, penteadinho e feliz! Atendimento impecável!"
+    },
+    {
+      "name": "Ricardo & Mel",
+      "avatar": "https://randomuser.me/api/portraits/men/41.jpg",
+      "text": "Mel odeia banho, mas aqui ela fica calma. Profissionais incríveis!"
+    },
+    {
+      "name": "Patrícia & Thor",
+      "avatar": "https://randomuser.me/api/portraits/women/62.jpg",
+      "text": "Thor é grandão e agitado, mas eles dominam com carinho e segurança. Recomendo!"
+    }
+  ]
+}

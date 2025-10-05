@@ -1,0 +1,19 @@
+{
+  "advantages": [
+    {
+      "icon": "🛁",
+      "title": "Produtos Premium",
+      "desc": "Usamos shampoos hipoalergênicos e livres de químicos agressivos."
+    },
+    {
+      "icon": "⏱️",
+      "title": "Agendamento Online",
+      "desc": "Marque pelo WhatsApp ou site. Horários flexíveis e lembrete por SMS."
+    },
+    {
+      "icon": "❤️",
+      "title": "Ambiente Calmo",
+      "desc": "Sem estresse! Música suave, petiscos e muito carinho para seu pet."
+    }
+  ]
+}
