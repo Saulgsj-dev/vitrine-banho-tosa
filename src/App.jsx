@@ -178,13 +178,18 @@ const App = () => {
 {/* Hero Section */}
 <section
   id="hero"
-  className="h-screen bg-cover bg-center bg-fixed flex items-center justify-center text-center text-white relative pt-20"
+  className="h-screen bg-cover bg-center bg-fixed flex items-center justify-center text-center relative pt-20"
   style={{ backgroundImage: "url('/banner-banho.webp')" }}
 >
-  <div className="absolute inset-0 bg-[#0d1b2a] bg-opacity-70"></div>
+  {/* Sobreposição escura */}
+  <div className="absolute inset-0 bg-[#0d1b2a] bg-opacity-85"></div>
+
+  {/* Conteúdo */}
   <div className="relative z-10 px-6 max-w-4xl">
-    <h1 className="text-5xl md:text-7xl font-light mb-6 tracking-tight">PETLUXE</h1>
-    <p className="text-xl md:text-2xl mb-8 font-light max-w-2xl mx-auto opacity-95">
+    <h1 className="text-5xl md:text-7xl font-light mb-6 tracking-tight text-white">
+      PETLUXE
+    </h1>
+    <p className="text-xl md:text-2xl mb-8 font-light max-w-2xl mx-auto opacity-95 text-white">
       Banho, tosa & muito carinho. Seu pet merece o melhor tratamento — com conforto e amor.
     </p>
     <button
