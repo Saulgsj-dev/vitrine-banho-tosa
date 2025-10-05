@@ -40,3 +40,49 @@
 .read-the-docs {
   color: #888;
 }
+
+
+/* src/index.css ou App.css */
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-100 {
+  opacity: 1;
+}
+.translate-y-10 {
+  transform: translateY(2.5rem);
+}
+.-translate-x-10 {
+  transform: translateX(-2.5rem);
+}
+.translate-y-0 {
+  transform: translateY(0);
+}
+.transition-all {
+  transition-property: all;
+}
+.duration-700 {
+  transition-duration: 700ms;
+}
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+/* Animação de flutuação suave (para depoimentos) */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Brilho sutil (para promoção) */
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(255,255,255,0.3); }
+  50% { box-shadow: 0 0 20px rgba(255,255,255,0.6), 0 0 30px rgba(255,215,0,0.4); }
+}
+.animate-glow {
+  animation: glow 2.5s ease-in-out infinite;
+}

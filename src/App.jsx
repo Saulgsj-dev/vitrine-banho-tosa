@@ -3,11 +3,11 @@ import emailjs from '@emailjs/browser';
 import servicesData from './data/services.json';
 import testimonialsData from './data/testimonials.json';
 import advantagesData from './data/advantages.json';
+import AnimatedSection from './components/AnimatedSection';
 
 const App = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
-  // Carrega dados dos arquivos JSON
   const services = servicesData.services;
   const testimonials = testimonialsData.testimonials;
   const advantages = advantagesData.advantages;
@@ -175,69 +175,71 @@ const App = () => {
         </div>
       </nav>
 
-{/* Hero Section */}
-<section
-  id="hero"
-  className="h-screen bg-cover bg-center bg-fixed flex items-center justify-center text-center relative pt-20"
-  style={{ backgroundImage: "url('/banner-banho.webp')" }}
->
-  {/* Sobreposição escura */}
-  <div className="absolute inset-0 bg-[#0d1b2a] bg-opacity-85"></div>
-
-  {/* Conteúdo */}
-  <div className="relative z-10 px-6 max-w-4xl">
-    <h1 className="text-5xl md:text-7xl font-light mb-6 tracking-tight text-white">
-      PETLUXE
-    </h1>
-    <p className="text-xl md:text-2xl mb-8 font-light max-w-2xl mx-auto opacity-95 text-white">
-      Banho, tosa & muito carinho. Seu pet merece o melhor tratamento — com conforto e amor.
-    </p>
-    <button
-      onClick={() => scrollToSection('services')}
-      className="bg-[#0d1b2a] text-white font-medium py-4 px-10 rounded-full transition duration-300 shadow hover:shadow-lg hover:bg-[#1b263b]"
-    >
-      Ver Serviços
-    </button>
-  </div>
-</section>
+      {/* Hero Section */}
+      <section
+        id="hero"
+        className="h-screen bg-cover bg-center bg-fixed flex items-center justify-center text-center relative pt-20"
+        style={{ backgroundImage: "url('/banner-banho.webp')" }}
+      >
+        <div className="absolute inset-0 bg-[#0d1b2a] bg-opacity-85"></div>
+        <AnimatedSection className="relative z-10 px-6 max-w-4xl">
+          <h1 className="text-5xl md:text-7xl font-light mb-6 tracking-tight text-white">
+            PETLUXE
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 font-light max-w-2xl mx-auto opacity-95 text-white">
+            Banho, tosa & muito carinho. Seu pet merece o melhor tratamento — com conforto e amor.
+          </p>
+          <button
+            onClick={() => scrollToSection('services')}
+            className="bg-[#0d1b2a] text-white font-medium py-4 px-10 rounded-full transition duration-300 shadow hover:shadow-lg hover:bg-[#1b263b]"
+          >
+            Ver Serviços
+          </button>
+        </AnimatedSection>
+      </section>
 
       {/* Services Section */}
       <section id="services" className="py-24 px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-light text-center mb-4">
-            Nossos <span className="font-medium text-[#0d1b2a]">Serviços</span>
-          </h2>
-          <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-            Cada serviço é feito com carinho, produtos de qualidade e atenção aos detalhes do seu pet.
-          </p>
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-4xl font-light mb-4">
+              Nossos <span className="font-medium text-[#0d1b2a]">Serviços</span>
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Cada serviço é feito com carinho, produtos de qualidade e atenção aos detalhes do seu pet.
+            </p>
+          </AnimatedSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service) => (
-              <div
+            {services.map((service, index) => (
+              <AnimatedSection
                 key={service.id}
-                className="bg-[#f9fbfd] rounded-2xl shadow-sm overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-md group border border-gray-200"
+                animation={index % 2 === 0 ? 'fade-left' : 'fade-right'}
+                delay={index * 100}
               >
-                <div className="h-56 overflow-hidden bg-white flex items-center justify-center">
-                  <img
-                    src={service.image}
-                    alt={service.name}
-                    className="w-full h-full object-contain p-4 group-hover:scale-110 transition duration-700"
-                  />
+                <div className="bg-[#f9fbfd] rounded-2xl shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow duration-300">
+                  <div className="h-56 overflow-hidden bg-white flex items-center justify-center">
+                    <img
+                      src={service.image}
+                      alt={service.name}
+                      className="w-full h-full object-contain p-4 transition-transform duration-700 hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-medium text-lg mb-2 text-[#0d1b2a]">{service.name}</h3>
+                    <p className="text-gray-600 text-sm mb-3">{service.description}</p>
+                    <p className="font-bold text-lg mb-4 text-[#0d1b2a]">{service.price}</p>
+                    <button
+                      onClick={() => handleWhatsAppClick(service.name)}
+                      className="w-full bg-[#0d1b2a] hover:bg-[#1b263b] text-white py-3 px-4 rounded-lg font-medium transition duration-300 flex items-center justify-center gap-2 shadow-sm hover:shadow"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                      Agendar via WhatsApp
+                    </button>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-medium text-lg mb-2 text-[#0d1b2a]">{service.name}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{service.description}</p>
-                  <p className="font-bold text-lg mb-4 text-[#0d1b2a]">{service.price}</p>
-                  <button
-                    onClick={() => handleWhatsAppClick(service.name)}
-                    className="w-full bg-[#0d1b2a] hover:bg-[#1b263b] text-white py-3 px-4 rounded-lg font-medium transition duration-300 flex items-center justify-center gap-2 shadow-sm hover:shadow"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                    Agendar via WhatsApp
-                  </button>
-                </div>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -246,21 +248,25 @@ const App = () => {
       {/* Depoimentos */}
       <section id="testimonials" className="py-24 bg-[#f9fbfd]">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-light text-center mb-4">
-            O que nossos <span className="font-medium text-[#0d1b2a]">clientes (e pets!) dizem</span>
-          </h2>
-          <p className="text-center text-gray-600 mb-16">Quem já confiou, ama — e volta sempre!</p>
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-4xl font-light mb-4">
+              O que nossos <span className="font-medium text-[#0d1b2a]">clientes (e pets!) dizem</span>
+            </h2>
+            <p className="text-gray-600">Quem já confiou, ama — e volta sempre!</p>
+          </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow transition duration-300 text-center border border-gray-200">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  className="w-20 h-20 rounded-full mx-auto mb-4 object-cover border-2 border-[#0d1b2a]"
-                />
-                <h4 className="font-medium mb-2 text-[#0d1b2a]">{testimonial.name}</h4>
-                <p className="text-gray-600 italic">“{testimonial.text}”</p>
-              </div>
+              <AnimatedSection key={index} animation="float" delay={index * 150}>
+                <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow transition duration-300 text-center border border-gray-200">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-20 h-20 rounded-full mx-auto mb-4 object-cover border-2 border-[#0d1b2a]"
+                  />
+                  <h4 className="font-medium mb-2 text-[#0d1b2a]">{testimonial.name}</h4>
+                  <p className="text-gray-600 italic">“{testimonial.text}”</p>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -269,17 +275,21 @@ const App = () => {
       {/* Vantagens */}
       <section id="advantages" className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-light mb-4">
-            Por que escolher o <span className="font-medium text-[#0d1b2a]">PETLUXE?</span>
-          </h2>
-          <p className="text-gray-600 mb-16">Tudo pensado para o bem-estar do seu pet e sua tranquilidade.</p>
+          <AnimatedSection className="mb-16">
+            <h2 className="text-4xl font-light mb-4">
+              Por que escolher o <span className="font-medium text-[#0d1b2a]">PETLUXE?</span>
+            </h2>
+            <p className="text-gray-600">Tudo pensado para o bem-estar do seu pet e sua tranquilidade.</p>
+          </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {advantages.map((adv, index) => (
-              <div key={index} className="group bg-[#f9fbfd] rounded-2xl p-8 shadow-sm hover:shadow transition-all duration-500 border border-gray-200">
-                <div className="text-5xl mb-4 inline-block">{adv.icon}</div>
-                <h3 className="text-xl font-medium mb-3 text-[#0d1b2a]">{adv.title}</h3>
-                <p className="text-gray-600">{adv.desc}</p>
-              </div>
+              <AnimatedSection key={index} animation="pop" delay={index * 120}>
+                <div className="group bg-[#f9fbfd] rounded-2xl p-8 shadow-sm hover:shadow transition-all duration-500 border border-gray-200">
+                  <div className="text-5xl mb-4 inline-block">{adv.icon}</div>
+                  <h3 className="text-xl font-medium mb-3 text-[#0d1b2a]">{adv.title}</h3>
+                  <p className="text-gray-600">{adv.desc}</p>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -287,7 +297,7 @@ const App = () => {
 
       {/* Promoção Relâmpago */}
       <section id="promo" className="py-24 bg-[#0d1b2a] text-white text-center">
-        <div className="max-w-4xl mx-auto px-6">
+        <AnimatedSection animation="glow" className="max-w-4xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-light mb-6">
             🐾 PROMOÇÃO ESPECIAL PET 🐾
           </h2>
@@ -306,22 +316,25 @@ const App = () => {
           >
             Agendar Promoção
           </button>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Contato por E-mail */}
       <section id="contact" className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-light mb-4">
-            Fale <span className="font-medium text-[#0d1b2a]">Conosco</span>
-          </h2>
-          <p className="text-gray-600 mb-10">
-            Envie sua mensagem e responderemos o mais rápido possível!
-          </p>
-
-          <div className="bg-[#f9fbfd] rounded-2xl p-8 shadow-sm border border-gray-200 max-w-2xl mx-auto">
-            <ContactForm />
-          </div>
+          <AnimatedSection className="mb-10">
+            <h2 className="text-4xl font-light mb-4">
+              Fale <span className="font-medium text-[#0d1b2a]">Conosco</span>
+            </h2>
+            <p className="text-gray-600">
+              Envie sua mensagem e responderemos o mais rápido possível!
+            </p>
+          </AnimatedSection>
+          <AnimatedSection>
+            <div className="bg-[#f9fbfd] rounded-2xl p-8 shadow-sm border border-gray-200 max-w-2xl mx-auto">
+              <ContactForm />
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -371,7 +384,7 @@ const App = () => {
         href="https://wa.me/5521990634671"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 z-50"
+        className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 z-50 animate-bounce"
         aria-label="Falar no WhatsApp"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
